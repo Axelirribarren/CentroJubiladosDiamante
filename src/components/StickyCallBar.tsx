@@ -1,4 +1,4 @@
-import { PHONE_NUMBER, PHONE_DISPLAY } from '../data/activities';
+/*import { PHONE_NUMBER, PHONE_DISPLAY } from '../data/activities';
 
 export default function StickyCallBar() {
     return (
@@ -14,4 +14,4 @@ export default function StickyCallBar() {
             </div>
         </div>
     );
-}
+}*/

@@ -6,9 +6,9 @@
 
 &nbsp;
 
-![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -27,10 +27,12 @@ Sitio web diseñado especialmente para **adultos mayores**, con foco en **accesi
 
 - 🎨 **Estética de acuarela** — Diseño cálido con paleta de colores suaves y naturales
 - ♿ **Accesibilidad total** — Fuentes mínimas de 18px, contraste alto, botones grandes (48px+)
-- 📱 **Responsive** — 1 columna en móvil, 2 en tablet, 3 en desktop
+- 📱 **Mobile First** — Diseño responsivo que prioriza la experiencia móvil
+- 📅 **Calendario interactivo** — Calendario mensual con actividades por día, colores por categoría
 - 💬 **WhatsApp integrado** — Botones de consulta directa con mensaje predefinido
-- 📞 **Barra fija de llamada** — Siempre visible para contacto inmediato
+- 🖼️ **Feature Cards** — Tarjetas con horarios, profesor, beneficios y CTA de WhatsApp
 - 🌐 **SEO optimizado** — Meta tags, estructura semántica, lang español
+- 🍔 **Menú hamburger** — Navegación adaptada para dispositivos móviles
 
 ---
 
@@ -40,37 +42,28 @@ Sitio web diseñado especialmente para **adultos mayores**, con foco en **accesi
 📁 CentroJubiladosDiamante/
 ├── 📁 public/
 │   └── 📁 assets/
-│       └── 📁 img/              ← Imágenes de acuarela (agregar aquí)
-│           ├── hero_illustration.png
-│           ├── card_yoga.png
-│           ├── card_gimnasia.png
-│           ├── card_stretching.png
-│           ├── card_taichi.png
-│           ├── card_teatro.png
-│           ├── card_coro.png
-│           ├── card_castanuelas.png
-│           ├── card_tejido.png
-│           ├── card_ritmos.png
-│           ├── card_folklore.png
-│           ├── card_enfermeria.png
-│           ├── card_kinesiologia.png
-│           ├── card_salario.png
-│           ├── card_caja.png
-│           ├── card_nutricionista.png
-│           ├── card_pedicura.png
-│           └── card_viajes.png
+│       └── 📁 img/               ← Imágenes de acuarela
+│           ├── centro.png
+│           ├── yoga.png
+│           ├── gimnasia.png
+│           ├── mano.png
+│           ├── baile1.png
+│           ├── canto.png
+│           ├── lectura.png
+│           └── LOGO JUBILADOS.jpg
 ├── 📁 src/
 │   ├── 📁 components/
-│   │   ├── Hero.tsx             ← Sección de bienvenida
-│   │   ├── ActivityCard.tsx     ← Tarjeta de actividad
-│   │   ├── SectionGrid.tsx      ← Grilla de sección
-│   │   ├── StickyCallBar.tsx    ← Barra fija de llamar
-│   │   └── Footer.tsx           ← Pie de página
+│   │   ├── Hero.tsx              ← Sección de bienvenida
+│   │   ├── NewsBanner.tsx        ← Banner de noticias
+│   │   ├── ActivityCalendar.tsx  ← Calendario interactivo
+│   │   ├── ActivityCard.tsx      ← Tarjeta de actividad (Feature Card)
+│   │   ├── SectionGrid.tsx       ← Grilla de sección
+│   │   └── Footer.tsx            ← Pie de página con contacto
 │   ├── 📁 data/
-│   │   └── activities.ts       ← Datos centralizados de actividades
-│   ├── App.tsx                  ← Componente principal
-│   ├── main.tsx                 ← Punto de entrada
-│   └── index.css                ← Estilos globales y tokens de diseño
+│   │   └── activities.ts        ← Datos centralizados + calendario semanal
+│   ├── App.tsx                   ← Componente principal + navegación
+│   ├── main.tsx                  ← Punto de entrada
+│   └── index.css                 ← Estilos globales y tokens de diseño
 ├── index.html
 ├── vite.config.ts
 ├── tsconfig.json
@@ -87,7 +80,7 @@ Sitio web diseñado especialmente para **adultos mayores**, con foco en **accesi
 |:------|:---:|:----|
 | 🟫 Beige cálido | `#F9F6F0` | Fondo principal |
 | 🩵 Celeste etéreo | `#E4EDEF` | Fondos de secciones |
-| 🌿 Verde salvia | `#D5DEC9` | Detalles y tarjetas |
+| 🌿 Verde salvia | `#D5DEC9` | Footer y detalles |
 | ⬛ Gris marengo | `#2A2C2B` | Texto principal |
 | 🩷 Rosa viejo | `#D8B4AD` | Acentos decorativos |
 | 🌲 Verde musgo | `#849C8F` | Botones de acción |
@@ -134,7 +127,7 @@ Las tarjetas utilizan imágenes con estilo **acuarela** (watercolor wash). Coloc
 public/assets/img/
 ```
 
-Cada imagen se nombra según la actividad: `card_yoga.png`, `card_gimnasia.png`, etc. Si falta una imagen, se muestra un emoji representativo automáticamente.
+Si falta una imagen, se muestra un emoji representativo automáticamente.
 
 ---
 
@@ -148,6 +141,7 @@ Cada imagen se nombra según la actividad: `card_yoga.png`, `card_gimnasia.png`,
 | Contraste de texto | Gris marengo sobre beige cálido |
 | Botones | Forma píldora, ancho completo en cards |
 | Foco visible | Outline verde 3px con offset |
+| Íconos | SVG outline (Heroicons), sin emojis en footer |
 
 ---
 

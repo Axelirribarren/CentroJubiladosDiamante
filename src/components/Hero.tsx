@@ -37,13 +37,22 @@ export default function Hero() {
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] max-w-[500px] max-h-[500px] bg-bg-terciario/50 rounded-full blur-[80px] -z-10" />
                     
                     <img
-                        src="/assets/img/3adultosmayores.png"
-                        alt="Ilustración en acuarela de adultos mayores compartiendo un mate y charlando"
-                        className="w-full max-w-[500px] h-auto object-contain mix-blend-multiply drop-shadow-sm"
+                        src="/assets/img/centro.png"
+                        alt="Ilustración de adultos mayores compartiendo"
+                        className="w-full max-w-[500px] h-auto object-contain mix-blend-multiply drop-shadow-sm [-webkit-mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)] relative z-10"
                     />
                 </div>
             </div>
             
+            {/* Logo Oficial de la Institución con bordes difuminados */}
+            <div className="relative z-10 w-full flex justify-center mt-12 md:mt-16 pointer-events-none">
+                <img
+                    src="/assets/img/LOGO JUBILADOS.jpg"
+                    alt="Logo Oficial Centro de Jubilados Diamante"
+                    className="h-28 md:h-36 w-auto object-contain mix-blend-multiply opacity-90 [-webkit-mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]"
+                />
+            </div>
+
             {/* Ambient Background Decorative elements */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-rosa/10 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-bg-secundario/40 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/4 pointer-events-none" />
