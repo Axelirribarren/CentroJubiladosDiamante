@@ -1,4 +1,5 @@
 import Hero from './components/Hero';
+import NewsBanner from './components/NewsBanner';
 import SectionGrid from './components/SectionGrid';
 import StickyCallBar from './components/StickyCallBar';
 import Footer from './components/Footer';
@@ -6,7 +7,7 @@ import { sections } from './data/activities';
 
 function App() {
   return (
-    <div className="min-h-screen bg-bg-principal text-text-principal">
+    <div className="min-h-screen bg-bg-principal text-text-principal font-sans">
       {/* Navigation - simple top bar */}
       <nav className="sticky top-0 z-40 bg-bg-principal/90 backdrop-blur-md border-b border-accent-rosa/10 px-6 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -29,6 +30,9 @@ function App() {
 
       {/* Hero section */}
       <Hero />
+      
+      {/* News Banner */}
+      <NewsBanner />
 
       {/* Content sections */}
       <main>
