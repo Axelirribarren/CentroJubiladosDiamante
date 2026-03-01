@@ -1,162 +1,143 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-@theme {
-  --color-bg-principal: #F9F6F0;
-  --color-bg-secundario: #E4EDEF;
-  --color-bg-terciario: #D5DEC9;
-  --color-text-principal: #2A2C2B;
-  --color-accent-rosa: #D8B4AD;
-  --color-accent-verde: #849C8F;
-  --color-accent-celeste: #A4B8BE;
-  --color-accent-dorado: #D4C5A0;
-
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-
-  --text-base: 1.125rem;   /* 18px minimum */
-  --text-lg: 1.25rem;      /* 20px */
-  --text-xl: 1.5rem;       /* 24px */
-  --text-2xl: 1.75rem;     /* 28px */
-  --text-3xl: 2rem;        /* 32px */
-  --text-4xl: 2.5rem;      /* 40px */
-  --text-5xl: 3rem;        /* 48px */
-}
-
 /* Base styles */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  color: var(--color-text-principal);
-  background-color: var(--color-bg-principal);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Ensure minimum text size */
-* {
-  font-size: inherit;
-}
-
-/* Watercolor background blobs */
-.watercolor-bg {
-  position: relative;
-}
-
-.watercolor-bg::before,
-.watercolor-bg::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.35;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.watercolor-bg::before {
-  width: 600px;
-  height: 600px;
-  background: var(--color-bg-secundario);
-  top: -200px;
-  left: -150px;
-}
-
-.watercolor-bg::after {
-  width: 500px;
-  height: 500px;
-  background: var(--color-bg-terciario);
-  bottom: -100px;
-  right: -100px;
-}
-
-/* Card hover animation */
-.card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(42, 44, 43, 0.08);
-}
-
-/* Button press animation */
-.btn-press {
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.btn-press:active {
-  transform: scale(0.97);
-}
-
-/* Image watercolor fade */
-.watercolor-img {
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-}
-
-/* Section divider watercolor wash */
-.section-wash {
-  position: relative;
-}
-
-.section-wash::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 5%;
-  right: 5%;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-accent-rosa) 20%,
-    var(--color-accent-celeste) 50%,
-    var(--color-accent-verde) 80%,
-    transparent
-  );
-  opacity: 0.4;
-  border-radius: 2px;
-}
-
-/* Sticky bar animation */
-.sticky-bar {
-  animation: slideUp 0.5s ease-out;
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+
+  body {
+    @apply font-sans text-base text-text-principal bg-bg-principal;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Component styles */
+@layer components {
+
+  /* Watercolor background blobs */
+  .watercolor-bg {
+    position: relative;
+  }
+
+  .watercolor-bg::before,
+  .watercolor-bg::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .watercolor-bg::before {
+    width: 600px;
+    height: 600px;
+    background: #E4EDEF;
+    top: -200px;
+    left: -150px;
+  }
+
+  .watercolor-bg::after {
+    width: 500px;
+    height: 500px;
+    background: #D5DEC9;
+    bottom: -100px;
+    right: -100px;
+  }
+
+  /* Card hover animation */
+  .card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(42, 44, 43, 0.08);
+  }
+
+  /* Button press animation */
+  .btn-press {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn-press:active {
+    transform: scale(0.97);
+  }
+
+  /* Image watercolor fade */
+  .watercolor-img {
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+
+  /* Section divider watercolor wash */
+  .section-wash {
+    position: relative;
+  }
+
+  .section-wash::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent,
+        #D8B4AD 20%,
+        #A4B8BE 50%,
+        #849C8F 80%,
+        transparent);
+    opacity: 0.4;
+    border-radius: 2px;
+  }
+
+  /* Sticky bar animation */
+  .sticky-bar {
+    animation: slideUp 0.5s ease-out;
+  }
+}
+
+/* Utility animations */
+@layer utilities {
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-out both;
   }
 }
 
 /* Focus styles for accessibility */
 *:focus-visible {
-  outline: 3px solid var(--color-accent-verde);
+  outline: 3px solid #849C8F;
   outline-offset: 3px;
   border-radius: 4px;
-}
-
-/* Smooth fade-in for sections */
-.fade-in {
-  animation: fadeIn 0.6s ease-out both;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
