@@ -50,7 +50,7 @@ Sitio web diseñado especialmente para **adultos mayores**, con foco en **accesi
 │           ├── baile1.png
 │           ├── canto.png
 │           ├── lectura.png
-│           └── LOGO JUBILADOS.jpg
+│           └── centro1.png
 ├── 📁 src/
 │   ├── 📁 components/
 │   │   ├── Hero.tsx              ← Sección de bienvenida

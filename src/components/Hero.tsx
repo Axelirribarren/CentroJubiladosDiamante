@@ -39,7 +39,7 @@ export default function Hero() {
                     <img
                         src="/assets/img/centro.png"
                         alt="Ilustración de adultos mayores compartiendo"
-                        className="w-full max-w-[500px] h-auto object-contain mix-blend-multiply drop-shadow-sm [-webkit-mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)] relative z-10"
+                        className="w-full max-w-[500px] h-auto object-contain mix-blend-multiply filter contrast-[1.1] saturate-[1.1] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_85%)] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_85%)] relative z-10"
                     />
                 </div>
             </div>
@@ -47,9 +47,9 @@ export default function Hero() {
             {/* Logo Oficial de la Institución con bordes difuminados */}
             <div className="relative z-10 w-full flex justify-center mt-12 md:mt-16 pointer-events-none">
                 <img
-                    src="/assets/img/LOGO JUBILADOS.jpg"
+                    src="/assets/img/centro1.png"
                     alt="Logo Oficial Centro de Jubilados Diamante"
-                    className="h-28 md:h-36 w-auto object-contain mix-blend-multiply opacity-90 [-webkit-mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]"
+                    className="h-36 md:h-48 w-auto object-contain mix-blend-multiply opacity-90 [-webkit-mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]"
                 />
             </div>
 

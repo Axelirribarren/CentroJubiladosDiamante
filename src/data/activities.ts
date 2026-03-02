@@ -7,10 +7,15 @@ export interface Activity {
     image: string;
     imageAlt: string;
     whatsappMessage: string;
+    whatsappNumber?: string;
     emoji: string;
     professor?: string;
+    contactPhone?: string;
+    contactPhoneDisplay?: string;
     benefits?: string[];
     category: 'taller' | 'salud';
+    isNew?: boolean;
+    startDate?: string;
 }
 
 export interface Section {
@@ -32,159 +37,280 @@ export interface CalendarEvent {
     whatsappMessage: string;
 }
 
+export interface ConsultService {
+    id: string;
+    title: string;
+    emoji: string;
+    description: string;
+}
+
 const WHATSAPP_NUMBER = '5493416526158';
 
-export const getWhatsAppLink = (message: string) =>
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+export const getWhatsAppLink = (message: string, phone?: string) =>
+    `https://wa.me/${phone || WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
 export const PHONE_NUMBER = '+543435313437';
 export const PHONE_DISPLAY = '343 531-3437';
 export const ADDRESS = 'José Hernández 126, Diamante, Entre Ríos';
+
+export const WHATSAPP_HOURS = 'Lunes a Viernes de 7:30 a 12:00 hs';
 
 export const sections: Section[] = [
     {
         id: 'movimiento',
         title: 'Movimiento y Bienestar',
         subtitle: 'Gimnasia, yoga y rutinas adaptadas para mantener tu cuerpo activo y cuidar tus articulaciones.',
-        emoji: '🌿',
+        emoji: '',
         bgClass: 'bg-bg-secundario/40',
         activities: [
             {
                 id: 'yoga',
                 title: 'Yoga y Despertar Físico',
-                description: 'Encontrá tu eje. Respiración, elongación suave y posturas adaptadas.',
+                description: 'Encontrá tu eje. Respiración, elongación suave y posturas adaptadas para sentirte mejor cada día.',
                 days: 'Lunes y Miércoles',
                 schedule: '15:15 hs',
                 image: '/assets/img/yoga.png',
-                imageAlt: 'Ilustración en acuarela de tres personas mayores practicando yoga',
-                whatsappMessage: 'Hola, quiero inscribirme en Yoga',
+                imageAlt: 'Ilustración acuarela de personas practicando yoga',
+                whatsappMessage: 'Hola, quisiera consultar sobre el taller de Yoga. ¿Podrían darme más información?',
                 emoji: '🧘',
-                professor: 'Prof. Laura Méndez',
-                benefits: ['Mejora la flexibilidad', 'Reduce el estrés', 'Fortalece el equilibrio'],
                 category: 'taller',
             },
             {
                 id: 'gimnasia',
                 title: 'Gimnasia Vital',
-                description: '¡Energía para tu día! Ejercicios con bandas y pesitas livianas.',
+                description: '¡Energía para tu día! Ejercicios con bandas y pesitas livianas para ganar fuerza y equilibrio.',
                 days: 'Lunes y Miércoles',
                 schedule: '16:30 hs',
                 image: '/assets/img/gimnasia.png',
-                imageAlt: 'Ilustración en acuarela de gimnasia guiada',
-                whatsappMessage: 'Hola, quiero anotarme en Gimnasia',
+                imageAlt: 'Ilustración acuarela de gimnasia guiada',
+                whatsappMessage: 'Hola, quisiera consultar sobre el taller de Gimnasia. ¿Podrían darme más información?',
                 emoji: '💪',
-                professor: 'Prof. Jorge Álvarez',
-                benefits: ['Fortalece huesos y músculos', 'Gana equilibrio', 'Mejora la agilidad'],
                 category: 'taller',
             },
             {
-                id: 'kinesiologia',
-                title: 'Kinesiología Sensible',
-                description: 'Sesiones personalizadas para calmar dolores y mejorar tu postura.',
-                days: 'Martes y Jueves',
-                schedule: 'Por turnos',
-                image: '/assets/img/mano.png',
-                imageAlt: 'Ilustración en acuarela de manos cuidadoras',
-                whatsappMessage: 'Hola, necesito un turno de Kinesiología',
-                emoji: '🤲',
-                professor: 'Kin. Claudia Paredes',
-                benefits: ['Alivia dolores crónicos', 'Mejora la postura', 'Cuidados personalizados'],
-                category: 'salud',
+                id: 'stretching',
+                title: 'Stretching',
+                description: 'Elongación suave y consciente para mejorar tu flexibilidad, prevenir lesiones y aliviar tensiones.',
+                days: 'Miércoles y Viernes',
+                schedule: '9:00 hs',
+                image: '/assets/img/skcretching.png',
+                imageAlt: 'Ilustración acuarela de stretching y elongación',
+                whatsappMessage: 'Hola, quisiera consultar sobre el taller de Stretching. ¿Podrían darme más información?',
+                emoji: '🤸',
+                category: 'taller',
+            },
+            {
+                id: 'taichi',
+                title: 'Tai Chi',
+                description: 'Movimientos suaves y armónicos para cultivar el equilibrio, la paz interior y la conexión cuerpo-mente.',
+                days: 'Martes 18:00 y Jueves 9:00',
+                schedule: '',
+                image: '/assets/img/taichi.png',
+                imageAlt: 'Ilustración acuarela de práctica de Tai Chi',
+                whatsappMessage: 'Hola, quisiera consultar sobre el taller de Tai Chi con Fanny Espinosa. ¿Podrían darme más información?',
+                emoji: '☯️',
+                professor: 'Fanny Espinosa',
+                contactPhone: '+543435313437',
+                contactPhoneDisplay: '343 531-3437',
+                category: 'taller',
             },
         ],
     },
     {
         id: 'arte',
         title: 'Arte, Cultura y Creatividad',
-        subtitle: 'Descubrí tu lado artístico. Talleres de teatro, coro y manualidades para aprender y divertirte.',
-        emoji: '🎨',
+        subtitle: 'Descubrí tu lado artístico. Talleres de teatro, coro, castañuelas y herramientas digitales.',
+        emoji: '',
         bgClass: 'bg-bg-principal',
         activities: [
             {
-                id: 'folklore',
-                title: 'Folklore y Danza',
-                description: 'Bailamos zamba, chacarera y ritmos de la patria.',
-                days: 'Miércoles y Viernes',
-                schedule: '17:00 hs',
-                image: '/assets/img/baile1.png',
-                imageAlt: 'Ilustración en acuarela de pareja bailando',
-                whatsappMessage: 'Hola, quiero sumarme a las clases de Folklore',
-                emoji: '💃',
-                professor: 'Prof. María Elena Ríos',
-                benefits: ['Alegra el corazón', 'Ejercita el cuerpo', 'Conecta con nuestras raíces'],
+                id: 'teatro',
+                title: 'Teatro',
+                description: 'Expresión, diversión y creatividad sobre el escenario. Animate a explorar personajes y emociones.',
+                days: 'Martes',
+                schedule: '16:30 a 17:30 hs',
+                image: '/assets/img/teatro2.png',
+                imageAlt: 'Ilustración acuarela de teatro y actuación',
+                whatsappMessage: 'Hola, quisiera consultar sobre el taller de Teatro. ¿Podrían darme más información?',
+                emoji: '🎭',
                 category: 'taller',
             },
             {
                 id: 'coro',
-                title: 'Coro "Voces Abiertas"',
-                description: 'Desde tangos hasta canciones populares. No hace falta experiencia.',
+                title: 'Coro e Iniciación',
+                description: 'Desde tangos hasta canciones populares. No hace falta experiencia, solo ganas de cantar.',
                 days: 'Jueves',
-                schedule: '10:00 hs',
-                image: '/assets/img/canto.png',
-                imageAlt: 'Ilustración en acuarela de un hombre mayor cantando feliz',
-                whatsappMessage: 'Hola, quisiera unirme al Coro',
+                schedule: '18:00 hs',
+                image: '/assets/img/coro2.png',
+                imageAlt: 'Ilustración acuarela de personas cantando en coro',
+                whatsappMessage: 'Hola, quisiera consultar sobre el Coro e Iniciación. ¿Podrían darme más información?',
                 emoji: '🎤',
-                professor: 'Dir. Roberto Funes',
-                benefits: ['Mejora la respiración', 'Estimula la memoria', 'Fortalece lazos sociales'],
                 category: 'taller',
-            }
+            },
+            {
+                id: 'castanuelas',
+                title: 'Taller de Castañuelas',
+                description: 'Aprendé el arte de las castañuelas con ritmo y técnica, en un espacio cálido y divertido.',
+                days: 'Martes',
+                schedule: '19:30 hs',
+                image: '/assets/img/casta.png',
+                imageAlt: 'Ilustración acuarela de castañuelas',
+                whatsappMessage: 'Hola, quisiera consultar sobre el Taller de Castañuelas con Marcela Quinteros. ¿Podrían darme más información?',
+                whatsappNumber: '5493404415127',
+                emoji: '💃',
+                professor: 'Marcela Quinteros',
+                contactPhone: '+5493404415127',
+                contactPhoneDisplay: '3404 41-5127',
+                category: 'taller',
+                isNew: true,
+            },
+            {
+                id: 'digital',
+                title: 'Herramientas Digitales',
+                description: 'Configurá MiOSER, correo, homebanking. Aprendé a usar el celular, sacá mejores fotos, compartilas en redes. A tu ritmo y con acompañamiento.',
+                days: 'Miércoles',
+                schedule: '17:45 hs',
+                image: '/assets/img/digital.png',
+                imageAlt: 'Ilustración acuarela de persona usando tecnología',
+                whatsappMessage: 'Hola, quisiera consultar sobre el taller de Herramientas Digitales con Mariana Schunck. ¿Podrían darme más información?',
+                whatsappNumber: '543434800316',
+                emoji: '📱',
+                professor: 'Lic. Mariana Schunck',
+                contactPhone: '+543434800316',
+                contactPhoneDisplay: '343 480-0316',
+                category: 'taller',
+            },
         ],
     },
     {
-        id: 'encuentro',
-        title: 'Vida Social y Encuentros',
-        subtitle: 'El espacio ideal para hacer nuevos amigos, compartir un mate y disfrutar de buenas charlas.',
-        emoji: '🌻',
+        id: 'salud',
+        title: 'Servicios de Salud',
+        subtitle: 'Cuidamos de vos. Enfermería y kinesiología con profesionales dedicados a tu bienestar.',
+        emoji: '',
         bgClass: 'bg-bg-secundario/40',
         activities: [
             {
-                id: 'mateadas',
-                title: 'Ronda de Mates y Letras',
-                description: 'Nos juntamos a leer cuentos, compartir historias y escucharnos.',
-                days: 'Viernes',
-                schedule: '16:00 a 18:00 hs',
-                image: '/assets/img/lectura.png',
-                imageAlt: 'Ilustración en acuarela de tres adultos mayores amigos',
-                whatsappMessage: 'Hola, quisiera participar de las rondas de mate',
-                emoji: '🧉',
-                professor: 'Coord. Ana Gutiérrez',
-                benefits: ['Compartir historias', 'Lectura y expresión', 'Compañerismo'],
+                id: 'enfermeria',
+                title: 'Enfermería',
+                description: 'Atención profesional para controles de salud, curaciones y seguimiento personalizado.',
+                days: 'Lunes 16:00 y Miércoles 9:00',
+                schedule: '',
+                image: '/assets/img/enfermeria.png',
+                imageAlt: 'Ilustración acuarela de atención de enfermería',
+                whatsappMessage: 'Hola, quisiera consultar sobre el servicio de Enfermería. ¿Podrían darme más información?',
+                emoji: '🏥',
+                category: 'salud',
+            },
+            {
+                id: 'kinesiologia',
+                title: 'Kinesiología',
+                description: 'Sesiones personalizadas para calmar dolores, mejorar tu postura y rehabilitación.',
+                days: 'Lunes, Miércoles y Viernes',
+                schedule: '8:30 hs — Solicitar turnos',
+                image: '/assets/img/mano.png',
+                imageAlt: 'Ilustración acuarela de manos cuidadoras',
+                whatsappMessage: 'Hola, quisiera solicitar un turno de Kinesiología. ¿Podrían darme más información?',
+                emoji: '🤲',
+                category: 'salud',
+            },
+        ],
+    },
+    {
+        id: 'proximamente',
+        title: 'Próximamente',
+        subtitle: 'Nuevos talleres que arrancan en la segunda quincena de marzo. ¡No te los pierdas!',
+        emoji: '',
+        bgClass: 'bg-bg-principal',
+        activities: [
+            {
+                id: 'tejido',
+                title: 'Tejido',
+                description: 'Aprendé o perfeccioná tus técnicas de tejido en un ambiente cálido y compartido.',
+                days: 'Martes',
+                schedule: '16:00 hs',
+                image: '/assets/img/tejido.png',
+                imageAlt: 'Ilustración acuarela de tejido artesanal',
+                whatsappMessage: 'Hola, quisiera consultar sobre el taller de Tejido. ¿Podrían darme más información?',
+                emoji: '🧶',
                 category: 'taller',
-            }
+                isNew: true,
+                startDate: 'Comienza el martes 17 de marzo',
+            },
+            {
+                id: 'ritmos',
+                title: 'Ritmos Latinos',
+                description: 'Movete al compás de la salsa, el merengue y la cumbia. ¡Pura alegría y energía!',
+                days: 'Miércoles',
+                schedule: '19:30 hs',
+                image: '/assets/img/ritmos.png',
+                imageAlt: 'Ilustración acuarela de baile latino',
+                whatsappMessage: 'Hola, quisiera consultar sobre el taller de Ritmos Latinos. ¿Podrían darme más información?',
+                emoji: '💃',
+                category: 'taller',
+                isNew: true,
+                startDate: 'Comienza el miércoles 18 de marzo',
+            },
+            {
+                id: 'folklore',
+                title: 'Folklore',
+                description: 'Bailamos zamba, chacarera y ritmos de la patria. Conectá con nuestras raíces.',
+                days: 'Jueves',
+                schedule: '16:30 hs',
+                image: '/assets/img/baile1.png',
+                imageAlt: 'Ilustración acuarela de pareja bailando folklore',
+                whatsappMessage: 'Hola, quisiera consultar sobre el taller de Folklore. ¿Podrían darme más información?',
+                emoji: '🪗',
+                category: 'taller',
+                isNew: true,
+                startDate: 'Comienza el jueves 19 de marzo',
+            },
         ],
     },
 ];
 
+export const consultServices: ConsultService[] = [
+    { id: 'acompanante', title: 'Acompañante Terapéutico', emoji: '🤝', description: 'Soporte profesional personalizado.' },
+    { id: 'nutricionista', title: 'Nutricionista', emoji: '🥗', description: 'Asesoramiento nutricional adaptado.' },
+    { id: 'pedicura', title: 'Pedicura', emoji: '✨', description: 'Cuidado profesional de pies.' },
+    { id: 'enfermera-part', title: 'Enfermera', emoji: '👩‍⚕️', description: 'Atención de enfermería particular.' },
+    { id: 'viajes', title: 'Viajes Grupales', emoji: '🚌', description: 'Excursiones y viajes de recreación.' },
+];
+
 // Mapping: día de la semana (0=domingo..6=sábado) → actividades
-// Se usa para el calendario interactivo
 export const weeklySchedule: Record<number, CalendarEvent[]> = {
-    1: [ // Lunes
-        { activityId: 'yoga', title: 'Yoga y Despertar Físico', schedule: '15:15 - 16:15', professor: 'Prof. Laura Méndez', emoji: '🧘', category: 'taller', whatsappMessage: 'Hola, quiero inscribirme en Yoga' },
-        { activityId: 'gimnasia', title: 'Gimnasia Vital', schedule: '16:30 - 17:30', professor: 'Prof. Jorge Álvarez', emoji: '💪', category: 'taller', whatsappMessage: 'Hola, quiero anotarme en Gimnasia' },
+    1: [
+        { activityId: 'kinesiologia', title: 'Kinesiología', schedule: '8:30 - Turnos', emoji: '🤲', category: 'salud', whatsappMessage: 'Hola, quisiera solicitar un turno de Kinesiología.' },
+        { activityId: 'yoga', title: 'Yoga y Despertar Físico', schedule: '15:15 - 16:15', emoji: '🧘', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Yoga.' },
+        { activityId: 'enfermeria', title: 'Enfermería', schedule: '16:00', emoji: '🏥', category: 'salud', whatsappMessage: 'Hola, quisiera consultar sobre el servicio de Enfermería.' },
+        { activityId: 'gimnasia', title: 'Gimnasia Vital', schedule: '16:30 - 17:30', emoji: '💪', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Gimnasia.' },
     ],
-    2: [ // Martes
-        { activityId: 'kinesiologia', title: 'Kinesiología Sensible', schedule: '8:30 - 12:00', professor: 'Kin. Claudia Paredes', emoji: '🤲', category: 'salud', whatsappMessage: 'Hola, necesito un turno de Kinesiología' },
+    2: [
+        { activityId: 'tejido', title: 'Tejido', schedule: '16:00', emoji: '�', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Tejido.' },
+        { activityId: 'teatro', title: 'Teatro', schedule: '16:30 - 17:30', emoji: '🎭', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Teatro.' },
+        { activityId: 'taichi', title: 'Tai Chi', schedule: '18:00', professor: 'Fanny Espinosa', emoji: '☯️', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Tai Chi.' },
+        { activityId: 'castanuelas', title: 'Castañuelas', schedule: '19:30', professor: 'Marcela Quinteros', emoji: '💃', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el Taller de Castañuelas.' },
     ],
-    3: [ // Miércoles
-        { activityId: 'yoga', title: 'Yoga y Despertar Físico', schedule: '15:15 - 16:15', professor: 'Prof. Laura Méndez', emoji: '🧘', category: 'taller', whatsappMessage: 'Hola, quiero inscribirme en Yoga' },
-        { activityId: 'gimnasia', title: 'Gimnasia Vital', schedule: '16:30 - 17:30', professor: 'Prof. Jorge Álvarez', emoji: '💪', category: 'taller', whatsappMessage: 'Hola, quiero anotarme en Gimnasia' },
-        { activityId: 'folklore', title: 'Folklore y Danza', schedule: '17:00 - 18:00', professor: 'Prof. María Elena Ríos', emoji: '💃', category: 'taller', whatsappMessage: 'Hola, quiero sumarme a las clases de Folklore' },
+    3: [
+        { activityId: 'kinesiologia', title: 'Kinesiología', schedule: '8:30 - Turnos', emoji: '🤲', category: 'salud', whatsappMessage: 'Hola, quisiera solicitar un turno de Kinesiología.' },
+        { activityId: 'stretching', title: 'Stretching', schedule: '9:00', emoji: '🤸', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Stretching.' },
+        { activityId: 'enfermeria', title: 'Enfermería', schedule: '9:00', emoji: '🏥', category: 'salud', whatsappMessage: 'Hola, quisiera consultar sobre el servicio de Enfermería.' },
+        { activityId: 'yoga', title: 'Yoga y Despertar Físico', schedule: '15:15 - 16:15', emoji: '🧘', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Yoga.' },
+        { activityId: 'gimnasia', title: 'Gimnasia Vital', schedule: '16:30 - 17:30', emoji: '💪', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Gimnasia.' },
+        { activityId: 'digital', title: 'Herramientas Digitales', schedule: '17:45', professor: 'Lic. Mariana Schunck', emoji: '�', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre Herramientas Digitales.' },
+        { activityId: 'ritmos', title: 'Ritmos Latinos', schedule: '19:30', emoji: '💃', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Ritmos Latinos.' },
     ],
-    4: [ // Jueves
-        { activityId: 'kinesiologia', title: 'Kinesiología Sensible', schedule: '8:30 - 12:00', professor: 'Kin. Claudia Paredes', emoji: '🤲', category: 'salud', whatsappMessage: 'Hola, necesito un turno de Kinesiología' },
-        { activityId: 'coro', title: 'Coro "Voces Abiertas"', schedule: '10:00 - 11:30', professor: 'Dir. Roberto Funes', emoji: '🎤', category: 'taller', whatsappMessage: 'Hola, quisiera unirme al Coro' },
+    4: [
+        { activityId: 'taichi', title: 'Tai Chi', schedule: '9:00', professor: 'Fanny Espinosa', emoji: '☯️', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Tai Chi.' },
+        { activityId: 'folklore', title: 'Folklore', schedule: '16:30', emoji: '🪗', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Folklore.' },
+        { activityId: 'coro', title: 'Coro e Iniciación', schedule: '18:00', emoji: '🎤', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el Coro e Iniciación.' },
     ],
-    5: [ // Viernes
-        { activityId: 'folklore', title: 'Folklore y Danza', schedule: '17:00 - 18:00', professor: 'Prof. María Elena Ríos', emoji: '💃', category: 'taller', whatsappMessage: 'Hola, quiero sumarme a las clases de Folklore' },
-        { activityId: 'mateadas', title: 'Ronda de Mates y Letras', schedule: '16:00 - 18:00', professor: 'Coord. Ana Gutiérrez', emoji: '🧉', category: 'taller', whatsappMessage: 'Hola, quisiera participar de las rondas de mate' },
+    5: [
+        { activityId: 'kinesiologia', title: 'Kinesiología', schedule: '8:30 - Turnos', emoji: '🤲', category: 'salud', whatsappMessage: 'Hola, quisiera solicitar un turno de Kinesiología.' },
+        { activityId: 'stretching', title: 'Stretching', schedule: '9:00', emoji: '🤸', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Stretching.' },
     ],
 };
 
-/**
- * Devuelve las actividades programadas para una fecha específica.
- * Sábados y domingos no tienen actividades.
- */
 export function getEventsForDate(date: Date): CalendarEvent[] {
-    const dayOfWeek = date.getDay(); // 0=Dom, 1=Lun, ..., 6=Sáb
+    const dayOfWeek = date.getDay();
     return weeklySchedule[dayOfWeek] || [];
 }
