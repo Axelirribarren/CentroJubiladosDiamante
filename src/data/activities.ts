@@ -2,6 +2,7 @@ export interface Activity {
     id: string;
     title: string;
     description?: string;
+    benefits?: string[];
     days?: string;
     schedule?: string;
     image: string;
@@ -12,7 +13,6 @@ export interface Activity {
     professor?: string;
     contactPhone?: string;
     contactPhoneDisplay?: string;
-    benefits?: string[];
     category: 'taller' | 'salud';
     isNew?: boolean;
     startDate?: string;
@@ -44,7 +44,7 @@ export interface ConsultService {
     description: string;
 }
 
-const WHATSAPP_NUMBER = '5493416526158';
+const WHATSAPP_NUMBER = '543435313437';
 
 export const getWhatsAppLink = (message: string, phone?: string) =>
     `https://wa.me/${phone || WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -66,31 +66,49 @@ export const sections: Section[] = [
             {
                 id: 'yoga',
                 title: 'Yoga y Despertar Físico',
-                description: 'Encontrá tu eje. Respiración, elongación suave y posturas adaptadas para sentirte mejor cada día.',
+                benefits: [
+                    'Encontrá tu eje y relajate.',
+                    'Respiración y elongación suave.',
+                    'Posturas adaptadas para sentirte mejor.'
+                ],
                 days: 'Lunes y Miércoles',
                 schedule: '15:15 hs',
                 image: '/assets/img/yoga.png',
                 imageAlt: 'Ilustración acuarela de personas practicando yoga',
                 whatsappMessage: 'Hola, quisiera consultar sobre el taller de Yoga. ¿Podrían darme más información?',
                 emoji: '🧘',
+                professor: 'Lorena Almirón',
+                contactPhone: '3416526158',
+                contactPhoneDisplay: '341 652-6158',
                 category: 'taller',
             },
             {
                 id: 'gimnasia',
-                title: 'Gimnasia Vital',
-                description: '¡Energía para tu día! Ejercicios con bandas y pesitas livianas para ganar fuerza y equilibrio.',
+                title: 'Gimnasia',
+                benefits: [
+                    '¡Llenate de energía para tu día!',
+                    'Ejercicios con bandas y pesitas livianas.',
+                    'Ganá fuerza y mejorá tu equilibrio.'
+                ],
                 days: 'Lunes y Miércoles',
                 schedule: '16:30 hs',
                 image: '/assets/img/gimnasia.png',
                 imageAlt: 'Ilustración acuarela de gimnasia guiada',
                 whatsappMessage: 'Hola, quisiera consultar sobre el taller de Gimnasia. ¿Podrían darme más información?',
                 emoji: '💪',
+                professor: 'Lorena Almirón',
+                contactPhone: '3416526158',
+                contactPhoneDisplay: '341 652-6158',
                 category: 'taller',
             },
             {
                 id: 'stretching',
                 title: 'Stretching',
-                description: 'Elongación suave y consciente para mejorar tu flexibilidad, prevenir lesiones y aliviar tensiones.',
+                benefits: [
+                    'Elongación suave y consciente.',
+                    'Mejorá tu flexibilidad y postura.',
+                    'Prevení lesiones y aliviá tensiones.'
+                ],
                 days: 'Miércoles y Viernes',
                 schedule: '9:00 hs',
                 image: '/assets/img/skcretching.png',
@@ -101,13 +119,17 @@ export const sections: Section[] = [
             },
             {
                 id: 'taichi',
-                title: 'Tai Chi',
-                description: 'Movimientos suaves y armónicos para cultivar el equilibrio, la paz interior y la conexión cuerpo-mente.',
+                title: 'Tai Chi Chuan',
+                benefits: [
+                    'Movimientos suaves y armónicos.',
+                    'Cultivá tu equilibrio corporal.',
+                    'Encontrá paz y conexión cuerpo-mente.'
+                ],
                 days: 'Martes 18:00 y Jueves 9:00',
                 schedule: '',
                 image: '/assets/img/taichi.png',
-                imageAlt: 'Ilustración acuarela de práctica de Tai Chi',
-                whatsappMessage: 'Hola, quisiera consultar sobre el taller de Tai Chi con Fanny Espinosa. ¿Podrían darme más información?',
+                imageAlt: 'Ilustración acuarela de práctica de Tai Chi Chuan',
+                whatsappMessage: 'Hola, quisiera consultar sobre el taller de Tai Chi Chuan con Fanny Espinosa. ¿Podrían darme más información?',
                 emoji: '☯️',
                 professor: 'Fanny Espinosa',
                 contactPhone: '+543435313437',
@@ -126,7 +148,11 @@ export const sections: Section[] = [
             {
                 id: 'teatro',
                 title: 'Teatro',
-                description: 'Expresión, diversión y creatividad sobre el escenario. Animate a explorar personajes y emociones.',
+                benefits: [
+                    'Expresión, diversión y creatividad.',
+                    'Animate a subir al escenario.',
+                    'Explorá nuevos personajes y emociones.'
+                ],
                 days: 'Martes',
                 schedule: '16:30 a 17:30 hs',
                 image: '/assets/img/teatro2.png',
@@ -138,7 +164,11 @@ export const sections: Section[] = [
             {
                 id: 'coro',
                 title: 'Coro e Iniciación',
-                description: 'Desde tangos hasta canciones populares. No hace falta experiencia, solo ganas de cantar.',
+                benefits: [
+                    'Cantamos desde tangos hasta canciones populares.',
+                    'No se requiere experiencia previa.',
+                    '¡Solo necesitas ganas de cantar y compartir!'
+                ],
                 days: 'Jueves',
                 schedule: '18:00 hs',
                 image: '/assets/img/coro2.png',
@@ -150,7 +180,11 @@ export const sections: Section[] = [
             {
                 id: 'castanuelas',
                 title: 'Taller de Castañuelas',
-                description: 'Aprendé el arte de las castañuelas con ritmo y técnica, en un espacio cálido y divertido.',
+                benefits: [
+                    'Aprendé el hermoso arte de las castañuelas.',
+                    'Practicá ritmo y técnica.',
+                    'Disfrutá en un espacio cálido y divertido.'
+                ],
                 days: 'Martes',
                 schedule: '19:30 hs',
                 image: '/assets/img/casta.png',
@@ -167,7 +201,11 @@ export const sections: Section[] = [
             {
                 id: 'digital',
                 title: 'Herramientas Digitales',
-                description: 'Configurá MiOSER, correo, homebanking. Aprendé a usar el celular, sacá mejores fotos, compartilas en redes. A tu ritmo y con acompañamiento.',
+                benefits: [
+                    'Configurá MiOSER, correo y homebanking.',
+                    'Aprendé a usar mejor el celular y compartí en redes.',
+                    'Añadimos nuevas habilidades a tu ritmo.'
+                ],
                 days: 'Miércoles',
                 schedule: '17:45 hs',
                 image: '/assets/img/digital.png',
@@ -192,7 +230,11 @@ export const sections: Section[] = [
             {
                 id: 'enfermeria',
                 title: 'Enfermería',
-                description: 'Atención profesional para controles de salud, curaciones y seguimiento personalizado.',
+                benefits: [
+                    'Atención profesional de confianza.',
+                    'Controles de salud preventivos.',
+                    'Seguimiento personalizado de bienestar.'
+                ],
                 days: 'Lunes 16:00 y Miércoles 9:00',
                 schedule: '',
                 image: '/assets/img/enfermeria.png',
@@ -204,7 +246,11 @@ export const sections: Section[] = [
             {
                 id: 'kinesiologia',
                 title: 'Kinesiología',
-                description: 'Sesiones personalizadas para calmar dolores, mejorar tu postura y rehabilitación.',
+                benefits: [
+                    'Sesiones personalizadas de fisioterapia.',
+                    'Calmá dolores, mejorá tu postura.',
+                    'Tratamientos de rehabilitación guiados.'
+                ],
                 days: 'Lunes, Miércoles y Viernes',
                 schedule: '8:30 hs — Solicitar turnos',
                 image: '/assets/img/mano.png',
@@ -225,7 +271,11 @@ export const sections: Section[] = [
             {
                 id: 'tejido',
                 title: 'Tejido',
-                description: 'Aprendé o perfeccioná tus técnicas de tejido en un ambiente cálido y compartido.',
+                benefits: [
+                    'Aprendé desde cero o perfeccioná tus técnicas.',
+                    'Creá tus propias prendas y manualidades.',
+                    'Disfrutá tejer en un ambiente cálido compartido.'
+                ],
                 days: 'Martes',
                 schedule: '16:00 hs',
                 image: '/assets/img/tejido.png',
@@ -239,7 +289,11 @@ export const sections: Section[] = [
             {
                 id: 'ritmos',
                 title: 'Ritmos Latinos',
-                description: 'Movete al compás de la salsa, el merengue y la cumbia. ¡Pura alegría y energía!',
+                benefits: [
+                    'Movete al compás de la salsa, merengue y cumbia.',
+                    'Mejorá tu coordinación y estado físico.',
+                    '¡Pura alegría y energía en cada clase!'
+                ],
                 days: 'Miércoles',
                 schedule: '19:30 hs',
                 image: '/assets/img/ritmos.png',
@@ -253,7 +307,11 @@ export const sections: Section[] = [
             {
                 id: 'folklore',
                 title: 'Folklore',
-                description: 'Bailamos zamba, chacarera y ritmos de la patria. Conectá con nuestras raíces.',
+                benefits: [
+                    'Bailamos zamba, chacarera y ritmos patrios.',
+                    'Conectá con nuestras raíces y tradiciones.',
+                    'Compartí la pasión por nuestra cultura.'
+                ],
                 days: 'Jueves',
                 schedule: '16:30 hs',
                 image: '/assets/img/baile1.png',
@@ -285,7 +343,7 @@ export const weeklySchedule: Record<number, CalendarEvent[]> = {
         { activityId: 'gimnasia', title: 'Gimnasia Vital', schedule: '16:30 - 17:30', emoji: '💪', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Gimnasia.' },
     ],
     2: [
-        { activityId: 'tejido', title: 'Tejido', schedule: '16:00', emoji: '�', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Tejido.' },
+        { activityId: 'tejido', title: 'Tejido', schedule: '16:00', emoji: '🧶', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Tejido.' },
         { activityId: 'teatro', title: 'Teatro', schedule: '16:30 - 17:30', emoji: '🎭', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Teatro.' },
         { activityId: 'taichi', title: 'Tai Chi', schedule: '18:00', professor: 'Fanny Espinosa', emoji: '☯️', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Tai Chi.' },
         { activityId: 'castanuelas', title: 'Castañuelas', schedule: '19:30', professor: 'Marcela Quinteros', emoji: '💃', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el Taller de Castañuelas.' },
@@ -296,7 +354,7 @@ export const weeklySchedule: Record<number, CalendarEvent[]> = {
         { activityId: 'enfermeria', title: 'Enfermería', schedule: '9:00', emoji: '🏥', category: 'salud', whatsappMessage: 'Hola, quisiera consultar sobre el servicio de Enfermería.' },
         { activityId: 'yoga', title: 'Yoga y Despertar Físico', schedule: '15:15 - 16:15', emoji: '🧘', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Yoga.' },
         { activityId: 'gimnasia', title: 'Gimnasia Vital', schedule: '16:30 - 17:30', emoji: '💪', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Gimnasia.' },
-        { activityId: 'digital', title: 'Herramientas Digitales', schedule: '17:45', professor: 'Lic. Mariana Schunck', emoji: '�', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre Herramientas Digitales.' },
+        { activityId: 'digital', title: 'Herramientas Digitales', schedule: '17:45', professor: 'Lic. Mariana Schunck', emoji: '📱', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre Herramientas Digitales.' },
         { activityId: 'ritmos', title: 'Ritmos Latinos', schedule: '19:30', emoji: '💃', category: 'taller', whatsappMessage: 'Hola, quisiera consultar sobre el taller de Ritmos Latinos.' },
     ],
     4: [

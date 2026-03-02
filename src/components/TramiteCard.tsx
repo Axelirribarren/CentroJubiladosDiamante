@@ -100,7 +100,7 @@ export default function TramiteCard({ tramite }: TramiteCardProps) {
                     className="block w-full bg-accent-verde text-bg-principal text-center text-sm md:text-base font-bold py-3.5 px-4 rounded-xl hover:opacity-90 btn-press transition-all duration-200 min-h-[48px] flex items-center justify-center gap-2.5 mt-3 shadow-sm hover:shadow-md"
                 >
                     <WhatsAppIcon />
-                    {tramite.ctaText}
+                    Solicitar Información
                 </a>
             </div>
         </article>

@@ -192,22 +192,21 @@ export default function Footer() {
             {/* ── Bottom Bar — Copyright & Credits ── */}
             <div className="bg-text-principal">
                 <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
-                    <p className="text-bg-principal/50">
-                        © {currentYear} Centro de Jubilados y Pensionados de Diamante. Todos los derechos reservados.
-                    </p>
-                    <p className="text-bg-principal/40">
-                        Desarrollado con{' '}
-                        <span className="text-accent-rosa">♥</span>
-                        {' '}por{' '}
+                    <p className="text-bg-principal/70 md:text-2xl lg:text-3xl">
+                        Desarrollado por{' '}
                         <a
                             href="https://github.com/Axelirribarren"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="font-semibold text-bg-principal/60 hover:text-accent-verde transition-colors"
+                            className="font-semibold text-bg-principal/100 hover:text-accent-verde transition-colors"
                         >
                             Axel Irribarren
                         </a>
                     </p>
+                    <p className="text-bg-principal/50">
+                        © {currentYear} Centro de Jubilados y Pensionados de Diamante. Todos los derechos reservados.
+                    </p>
+
                 </div>
             </div>
         </footer>

@@ -44,15 +44,6 @@ export default function Hero() {
                 </div>
             </div>
             
-            {/* Logo Oficial de la Institución con bordes difuminados */}
-            <div className="relative z-10 w-full flex justify-center mt-12 md:mt-16 pointer-events-none">
-                <img
-                    src="/assets/img/centro1.png"
-                    alt="Logo Oficial Centro de Jubilados Diamante"
-                    className="h-36 md:h-48 w-auto object-contain mix-blend-multiply opacity-90 [-webkit-mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]"
-                />
-            </div>
-
             {/* Ambient Background Decorative elements */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-rosa/10 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-bg-secundario/40 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/4 pointer-events-none" />

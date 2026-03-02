@@ -26,13 +26,14 @@ Sitio web diseñado especialmente para **adultos mayores**, con foco en **accesi
 ### ✨ Características principales
 
 - 🎨 **Estética de acuarela** — Diseño cálido con paleta de colores suaves y naturales
-- ♿ **Accesibilidad total** — Fuentes mínimas de 18px, contraste alto, botones grandes (48px+)
-- 📱 **Mobile First** — Diseño responsivo que prioriza la experiencia móvil
-- 📅 **Calendario interactivo** — Calendario mensual con actividades por día, colores por categoría
-- 💬 **WhatsApp integrado** — Botones de consulta directa con mensaje predefinido
-- 🖼️ **Feature Cards** — Tarjetas con horarios, profesor, beneficios y CTA de WhatsApp
-- 🌐 **SEO optimizado** — Meta tags, estructura semántica, lang español
-- 🍔 **Menú hamburger** — Navegación adaptada para dispositivos móviles
+- ♿ **Accesibilidad total** — Fuentes engrosadas, contraste adecuado, checklists legibles
+- 📱 **Mobile First** — Diseño responsivo que prioriza la experiencia en móviles
+- 📅 **Listado de Actividades** — Todas las actividades divididas en categorías lógicas (Movimiento, Arte, Salud, Próximamente) con sus horarios y profesores.
+- 💬 **WhatsApp integrado** — Botones de consulta específicos directo para cada actividad o gestión.
+- 📋 **Gestiones y Trámites** — Guías claras (requisitos, beneficios) para Salario Familiar, Seguros, Caja de Jubilaciones, etc.
+- 📸 **Vida en el Centro (Galería)** — Un espacio dedicado a mostrar momentos, testimonios y fotos reales del centro.
+- 🛠️ **Servicios Extra** — Soporte para consultar por acompañantes, nutrición, enfermería particular, viajes, etc.
+- 🍔 **Navegación Profesional** — Navbar optimizado sin emojis, responsivo, y una barra superior con los horarios de atención digital.
 
 ---
 
@@ -49,18 +50,22 @@ Sitio web diseñado especialmente para **adultos mayores**, con foco en **accesi
 │           ├── mano.png
 │           ├── baile1.png
 │           ├── canto.png
-│           ├── lectura.png
-│           └── centro1.png
+│           ├── ...otras imagenes
+│           └── 📁 vida/               ← Fotos reales para Galería
 ├── 📁 src/
 │   ├── 📁 components/
-│   │   ├── Hero.tsx              ← Sección de bienvenida
-│   │   ├── NewsBanner.tsx        ← Banner de noticias
-│   │   ├── ActivityCalendar.tsx  ← Calendario interactivo
-│   │   ├── ActivityCard.tsx      ← Tarjeta de actividad (Feature Card)
-│   │   ├── SectionGrid.tsx       ← Grilla de sección
-│   │   └── Footer.tsx            ← Pie de página con contacto
+│   │   ├── Hero.tsx              ← Sección principal
+│   │   ├── ActivityCard.tsx      ← Tarjeta de actividad con checklist de beneficios
+│   │   ├── ActivityCalendar.tsx  ← Grilla semanal estática de actividades
+│   │   ├── TramitesSection.tsx   ← Sección Gestiones y Trámites
+│   │   ├── TramiteCard.tsx       ← Tarjeta para Salarios, Reclamos, etc.
+│   │   ├── SectionGrid.tsx       ← Generador de secciones generales
+│   │   ├── ServiciosConsultar.tsx← Grid de servicios on-demand
+│   │   ├── VidaEnElCentro.tsx    ← Galería de fotos con testimonios
+│   │   └── Footer.tsx            ← Pie de página
 │   ├── 📁 data/
-│   │   └── activities.ts        ← Datos centralizados + calendario semanal
+│   │   ├── activities.ts        ← Data de talleres, servicios y estructura de la semana
+│   │   └── tramites.ts          ← Información legal/administrativa de cada trámite
 │   ├── App.tsx                   ← Componente principal + navegación
 │   ├── main.tsx                  ← Punto de entrada
 │   └── index.css                 ← Estilos globales y tokens de diseño

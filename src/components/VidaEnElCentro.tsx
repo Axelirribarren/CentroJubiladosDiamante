@@ -116,6 +116,15 @@ export default function VidaEnElCentro() {
                 {/* Ambient decorations */}
                 <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent-dorado/8 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/4 pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-accent-rosa/8 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3 pointer-events-none" />
+                
+                {/* Logo Watermark */}
+                <div className="absolute top-10 right-10 opacity-[0.03] rotate-12 pointer-events-none z-0">
+                    <img 
+                        src="/assets/img/centro1.png" 
+                        alt="" 
+                        className="w-[300px] md:w-[450px] mix-blend-multiply grayscale"
+                    />
+                </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto">
                     {/* Section header */}
